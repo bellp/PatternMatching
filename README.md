@@ -1,4 +1,4 @@
-# PatternMatching
+# Pattern Matching
 
 If you're familiar with any funcitonal programming language, you've probably run into pattern matching. Unfortunately C# doesn't support it (yet), but I've been able to write my own API to support it. It's still not as great as a real functional language's implementation, but can still be useful in some cases.
 
