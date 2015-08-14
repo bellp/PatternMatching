@@ -5,18 +5,20 @@ If you're familiar with any funcitonal programming language, you've probably run
 Example:
 
 
-// Matching a Fruit value to a string value
-string description = fruit.Match<Fruit, string>()
-    .With(f => f.Description.Length > 20, "That's a long description")
-    .With(new Apple("Granny Smith"), "My favorite :)")
-    .WithType<Apple>("An apple")
-    .WithType<Banana>("A banana")
-    .WithNull("Unsure what type of fruit.")
-    .Finally("Huh?");
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+<span class="rem">// Matching a Fruit value to a string value</span>
+<span class="kwrd">string</span> description = fruit.Match&lt;Fruit, <span class="kwrd">string</span>&gt;()
+    .With(f =&gt; f.Description.Length &gt; 20, <span class="str">"That's a long description"</span>)
+    .With(<span class="kwrd">new</span> Apple(<span class="str">"Granny Smith"</span>), <span class="str">"My favorite :)"</span>)
+    .WithType&lt;Apple&gt;(<span class="str">"An apple"</span>)
+    .WithType&lt;Banana&gt;(<span class="str">"A banana"</span>)
+    .WithNull(<span class="str">"Unsure what type of fruit."</span>)
+    .Finally(<span class="str">"Huh?"</span>);
   
   
-// Matching a value with an action
+<span class="rem">// Matching a value with an action</span>
 42.Match()
-    .With(n => n % 2 != 0, s => Console.WriteLine("Odd"))
-    .With(42, s => Console.WriteLine("The meaning of life, the universe, and everything."))
-    .Finally(s => {/* do something else */});
+    .With(n =&gt; n % 2 != 0, s =&gt; Console.WriteLine(<span class="str">"Odd"</span>))
+    .With(42, s =&gt; Console.WriteLine(<span class="str">"The meaning of life, the universe, and everything."</span>))
+    .Finally(s =&gt; {<span class="rem">/* do something else */</span>});</pre>
