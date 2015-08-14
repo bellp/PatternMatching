@@ -1,0 +1,16 @@
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.execution.desktop.dll
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\PatternMatching.UnitTests.dll
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\PatternMatching.UnitTests.pdb
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\PatternMatching.dll
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.abstractions.dll
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.assert.dll
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.core.dll
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\PatternMatching.pdb
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.abstractions.xml
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.assert.pdb
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.assert.xml
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.core.pdb
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\bin\Debug\xunit.core.xml
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\obj\Debug\PatternMatching.UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\obj\Debug\PatternMatching.UnitTests.dll
+C:\Users\pbell\Documents\Visual Studio 2013\Projects\PatternMatching\PatternMatching.UnitTests\obj\Debug\PatternMatching.UnitTests.pdb
