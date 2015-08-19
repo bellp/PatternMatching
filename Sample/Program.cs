@@ -18,8 +18,9 @@ namespace Sample
 
             // Matching a value with an action
             42.Match()
-                .With(n => n % 2 != 0, s => Console.WriteLine("Odd"))
+                .With(n => n % 2 != 0, n => Console.WriteLine("{0} is Odd", n))
                 .With(42, s => Console.WriteLine("The meaning of life, the universe, and everything."))
+                .WithRange(1, 11, n => Console.WriteLine("{0} is between 1 and 10", n))
                 .Finally(s => {/* do something else */});
 
             Console.ReadLine();
