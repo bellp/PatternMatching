@@ -4,11 +4,17 @@ namespace PatternMatching
 {
     public static class PatternMatchingExtensions
     {
-        public static ValueToken<TInput, TResult> Match<TInput, TResult>(this TInput expression)
+        /// <summary>
+        /// Matches an expression to a value
+        /// </summary>
+        public static ValueToken<TSource, TResult> Match<TSource, TResult>(this TSource expression)
         {
-            return new ValueToken<TInput, TResult>(expression);
+            return new ValueToken<TSource, TResult>(expression);
         }
 
+        /// <summary>
+        /// Matches an expression to an action
+        /// </summary>
         public static ActionToken<T> Match<T>(this T expression)
         {
             return new ActionToken<T>(expression);

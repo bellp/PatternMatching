@@ -31,7 +31,7 @@ namespace PatternMatching.Tokens
             return GenerateToken(action, conditionMet);
         }
 
-        public ActionToken<TExpression> WithType<T>(Action<TExpression> action) where T : TExpression
+        public ActionToken<TExpression> WithType<T>(Action<T> action) where T : TExpression
         {
             if (_conditionMet)
             {
@@ -39,7 +39,13 @@ namespace PatternMatching.Tokens
             }
 
             bool conditionMet = _expression is T;
-            return GenerateToken(action, conditionMet);
+
+            if (conditionMet)
+            {
+                action((T)_expression);
+            }
+
+            return new ActionToken<TExpression>(_expression, conditionMet);
         }
 
         public ActionToken<TExpression> With(TExpression expression, Action<TExpression> action)

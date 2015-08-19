@@ -44,6 +44,23 @@ namespace PatternMatching.Tokens
             return new ValueToken<TExpression, TResult>(_expression, resultExpression, conditionMet);
         }
 
+        public ValueToken<TExpression, TResult> WithType<TType>(Func<TType, TResult> selector) where TType : TExpression
+        {
+            if (_conditionMet)
+            {
+                return this;
+            }
+
+            bool conditionMet = _expression is TType;
+
+            if (conditionMet)
+            {
+                return new ValueToken<TExpression, TResult>(_expression, selector((TType) _expression), true);
+            }
+
+            return this;
+        }
+
         public virtual ValueToken<TExpression, TResult> With(IEnumerable<TExpression> collection, TResult resultExpression)
         {
             if (_conditionMet)

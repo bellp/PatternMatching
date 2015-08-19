@@ -62,6 +62,28 @@ namespace PatternMatching.UnitTests
         }
 
         [Fact]
+        public void WithType_Selector_Used_If_Condition_Met()
+        {
+            Vehicle vehicle = new Car();
+            int result = vehicle.Match<Vehicle, int>()
+                .WithType<Car>(c => 2)
+                .Finally(0);
+
+            Assert.Equal(2, result);
+        }
+
+        [Fact]
+        public void WithType_Selector_Not_Used_If_Condition_Not_Met()
+        {
+            Vehicle vehicle = new Vehicle();
+            int result = vehicle.Match<Vehicle, int>()
+                .WithType<Car>(c => 2)
+                .Finally(0);
+
+            Assert.Equal(0, result);
+        }
+
+        [Fact]
         public void WithType_Value_Used_If_Condition_Met()
         {
             Vehicle vehicle = new Car();
