@@ -13,7 +13,7 @@ Example:
     .With(<span class="kwrd">new</span> Apple(<span class="str">"Granny Smith"</span>), <span class="str">"My favorite :)"</span>)
     .WithType&lt;Apple&gt;(<span class="str">"An apple"</span>)
     .WithType&lt;Banana&gt;(<span class="str">"A banana"</span>)
-    .WithNull(<span class="str">"Unsure what type of fruit."</span>)
+    .WithNull(<span class="str">"Not a fruit."</span>)
     .Finally(<span class="str">"Huh?"</span>);
   
   
