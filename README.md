@@ -17,8 +17,9 @@ Example:
     .Finally(<span class="str">"Huh?"</span>);
   
   
-<span class="rem">// Matching a value with an action</span>
+<span class="rem">// Matching a value with an action
 42.Match()
-    .With(n =&gt; n % 2 != 0, s =&gt; Console.WriteLine(<span class="str">"Odd"</span>))
-    .With(42, s =&gt; Console.WriteLine(<span class="str">"The meaning of life, the universe, and everything."</span>))
-    .Finally(s =&gt; {<span class="rem">/* do something else */</span>});</pre>
+    .With(n => n % 2 != 0, n => Console.WriteLine("{0} is Odd", n))
+    .With(42, s => Console.WriteLine("The meaning of life, the universe, and everything."))
+    .WithRange(1, 11, n => Console.WriteLine("{0} is between 1 and 10", n))
+    .Finally(s => {/* do something else */});</pre>
