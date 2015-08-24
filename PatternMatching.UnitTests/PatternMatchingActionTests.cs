@@ -1,13 +1,156 @@
-﻿using System;
-using PatternMatching;
-using PatternMatching.UnitTests.TestClasses;
+﻿using PatternMatching.UnitTests.TestClasses;
 using PatternMatchingTests.TestClasses;
 using Xunit;
 
-namespace PatternMatchingTests
+namespace PatternMatching.UnitTests
 {
     public class PatternMatchingActionTests
     {
+        [Fact]
+        public void No_Matching_Actions_Invoked_After_Deferred_Action_Invoked()
+        {
+            bool patternMatched = false;
+            int matchCount = 0;
+            "Apple".Match()
+                .With("Apple")
+                .With("Orange")
+                .With("Apple", f =>
+                {
+                    ++matchCount;
+                    patternMatched = true;
+                })
+                .With("Apple", f => ++matchCount)
+                .Finally(s => ++matchCount);
+
+            Assert.Equal(1, matchCount);
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void Finally_Action_Invoked_If_Previous_Match_Occurred_With_No_Action()
+        {
+            bool patternMatched = false;
+            "Apple".Match()
+                .With("Apple")
+                .Finally(x => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void NonMatching_WithRange_Can_Chain_To_Matching_With()
+        {
+            bool patternMatched = false;
+            3.Match()
+                .WithRange(5, 10)
+                .With(3, n => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void Matching_With_Can_Chain_To_NonMatching_WithRange()
+        {
+            bool patternMatched = false;
+            3.Match()
+                .With(5)
+                .WithRange(1, 4, n => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void NonMatching_With_Can_Chain_To_Matching_With()
+        {
+            bool patternMatched = false;
+            "Red Delicious".Match()
+                .With("Granny Smith")
+                .With("Red Delicious", a => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void Matching_With_Can_Chain_To_NonMatching_With()
+        {
+            bool patternMatched = false;
+            "Granny Smith".Match()
+                .With("Granny Smith")
+                .With("Red Delicious", a => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void WithNull_Can_Chain_To_Matching_With()
+        {
+            string value = null;
+            bool patternMatched = false;
+            value.Match()
+                .WithNull()
+                .With("Red Delicious", a => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void Matching_With_Can_Chain_To_NonMatching_WithNull()
+        {
+            const string value = "Red Delicious";
+            bool patternMatched = false;
+            value.Match()
+                .With("Red Delicious")
+                .WithNull(() => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void Matching_With_Can_Chain_To_WithNull()
+        {
+            bool patternMatched = false;
+            "Granny Smith".Match()
+                .With("Granny Smith")
+                .With("Red Delicious", a => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void With_Can_Chain_To_WithType()
+        {
+            bool patternMatched = false;
+            "Red Delicious".Match()
+                .With("Granny Smith")
+                .WithType<string>(a => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void WithType_Can_Chain_To_With()
+        {
+            bool patternMatched = false;
+            "Red Delicious".Match()
+                .WithType<string>()
+                .With("Granny Smith", s => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
+        [Fact]
+        public void Chained_Withs_Return_True_If_Middle_Matches()
+        {
+            bool patternMatched = false;
+            "Apple".Match()
+                .With("Banana")
+                .With("Apple")
+                .With("Orange")
+                .WithNull(() => patternMatched = true);
+
+            Assert.True(patternMatched);
+        }
+
         [Fact]
         public void Constant_With_Should_Invoke_Action_If_Pattern_Matches()
         {
@@ -149,7 +292,7 @@ namespace PatternMatchingTests
             (5.0).Match()
                 .WithRange(0.0, 5.0, d => patternMatched = true);
 
-            Assert.False(patternMatched);
+            Assert.True(patternMatched);
         }
 
         [Fact]

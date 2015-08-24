@@ -1,6 +1,5 @@
 ﻿using System;
 using PatternMatching.UnitTests.TestClasses;
-using PatternMatchingTests.TestClasses;
 using Xunit;
 
 namespace PatternMatching.UnitTests
@@ -132,7 +131,7 @@ namespace PatternMatching.UnitTests
                 .WithRange(0.0, 5.0, "In Range")
                 .Finally("Not in Range");
 
-            Assert.Equal("Not in Range", result);
+            Assert.Equal("In Range", result);
         }
 
         [Fact]

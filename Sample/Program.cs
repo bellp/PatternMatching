@@ -19,9 +19,9 @@ namespace Sample
             // Matching a value with an action
             42.Match()
                 .With(n => n % 2 != 0, n => Console.WriteLine("{0} is Odd", n))
-                .With(42, s => Console.WriteLine("The meaning of life, the universe, and everything."))
-                .WithRange(1, 11, n => Console.WriteLine("{0} is between 1 and 10", n))
-                .Finally(s => {/* do something else */});
+                .With(42, s => Console.WriteLine("The meaning of life, the universe, and everything"))
+                .WithRange(1, 10, n => Console.WriteLine("{0} is even and between 1 and 10", n))
+                .Finally(s => { throw new Exception("Oh no!"); });
 
             Console.ReadLine();
         }
@@ -34,7 +34,7 @@ namespace Sample
                 .With(new Apple("Granny Smith"), "My favorite :)")
                 .WithType<Apple>("An apple")
                 .WithType<Banana>("A banana")
-                .WithNull("No fruit at all.")
+                .WithNull("Not a fruit")
                 .Finally("Huh?");
         }
     }

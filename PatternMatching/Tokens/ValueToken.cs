@@ -22,14 +22,14 @@ namespace PatternMatching.Tokens
             _conditionMet = conditionMet;
         }
 
-        public ValueToken<TExpression, TResult> WithRange(IComparable<TExpression> fromInclusive, IComparable<TExpression> toExclusive, TResult resultExpression)
+        public ValueToken<TExpression, TResult> WithRange(IComparable<TExpression> fromInclusive, IComparable<TExpression> toInclusive, TResult resultExpression)
         {
             if (_conditionMet)
             {
                 return this;
             }
 
-            bool conditionMet = fromInclusive.CompareTo(_expression) <= 0 && toExclusive.CompareTo(_expression) > 0;
+            bool conditionMet = Conditions.InRange(fromInclusive, toInclusive, _expression);
             return new ValueToken<TExpression, TResult>(_expression, resultExpression, conditionMet);
         }
 
@@ -61,7 +61,7 @@ namespace PatternMatching.Tokens
             return this;
         }
 
-        public virtual ValueToken<TExpression, TResult> With(IEnumerable<TExpression> collection, TResult resultExpression)
+        public ValueToken<TExpression, TResult> With(IEnumerable<TExpression> collection, TResult resultExpression)
         {
             if (_conditionMet)
             {
@@ -85,7 +85,7 @@ namespace PatternMatching.Tokens
 
         public ValueToken<TExpression, TResult> With(TExpression expression, Func<TExpression, TResult> selector)
         {
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
             if (_conditionMet)
             {
@@ -98,7 +98,7 @@ namespace PatternMatching.Tokens
 
         public ValueToken<TExpression, TResult> With(Predicate<TExpression> predicate, TResult resultExpression)
         {
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             if (_conditionMet)
             {

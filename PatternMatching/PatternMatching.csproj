@@ -38,6 +38,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conditions.cs" />
     <Compile Include="Tokens\ActionToken.cs" />
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="PatternMatchingExtensions.cs" />
