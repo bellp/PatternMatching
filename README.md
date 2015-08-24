@@ -5,7 +5,7 @@ If you're familiar with any funcitonal programming language, you've probably run
 Example:
 
 ```C#
-// Matching a Fruit value to a string value
+// Matching a value with a string
 private static string DescribeFruit(Fruit fruit)
 {
     return fruit.Match<Fruit, string>()
