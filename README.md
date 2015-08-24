@@ -4,22 +4,25 @@ If you're familiar with any funcitonal programming language, you've probably run
 
 Example:
 
-
-<!-- code formatted by http://manoli.net/csharpformat/ -->
-<pre class="csharpcode">
-<span class="rem">// Matching a Fruit value to a string value</span>
-<span class="kwrd">string</span> description = fruit.Match&lt;Fruit, <span class="kwrd">string</span>&gt;()
-    .With(f =&gt; f.Description.Length &gt; 20, <span class="str">"That's a long description"</span>)
-    .With(<span class="kwrd">new</span> Apple(<span class="str">"Granny Smith"</span>), <span class="str">"My favorite :)"</span>)
-    .WithType&lt;Apple&gt;(<span class="str">"An apple"</span>)
-    .WithType&lt;Banana&gt;(<span class="str">"A banana"</span>)
-    .WithNull(<span class="str">"Not a fruit."</span>)
-    .Finally(<span class="str">"Huh?"</span>);
+private static string DescribeFruit(Fruit fruit)
+{
+    // Matching a Fruit value to a string value
+    return fruit.Match<Fruit, string>()
+        .With(f => f.Description.Length > 20, "That's a long description")
+        .With(new Apple("Granny Smith"), "My favorite :)")
+        .WithType<Apple>("An apple")
+        .WithType<Banana>("A banana")
+        .WithNull("Not a fruit")
+        .Finally("Huh?");
+}
   
   
-<span class="rem">// Matching a value with an action
+// Matching a value with an action
 42.Match()
     .With(n => n % 2 != 0, n => Console.WriteLine("{0} is Odd", n))
-    .With(42, s => Console.WriteLine("The meaning of life, the universe, and everything."))
-    .WithRange(1, 11, n => Console.WriteLine("{0} is between 1 and 10", n))
-    .Finally(s => {/* do something else */});</pre>
+    .With(42, s => Console.WriteLine("The meaning of life, the universe, and everything"))
+    .WithRange(1, 10, n => Console.WriteLine("{0} is even and between 1 and 10", n))
+    .With(64)
+    .With(128)
+    .With(256, n => Console.WriteLine("{0} is 64, 128, or 256", n))
+    .Finally(s => { throw new Exception("Oh no!"); });
