@@ -5,9 +5,9 @@ If you're familiar with any funcitonal programming language, you've probably run
 Example:
 
 ```C#
+// Matching a Fruit value to a string value
 private static string DescribeFruit(Fruit fruit)
 {
-    // Matching a Fruit value to a string value
     return fruit.Match<Fruit, string>()
         .With(f => f.Description.Length > 20, "That's a long description")
         .With(new Apple("Granny Smith"), "My favorite :)")
